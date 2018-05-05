@@ -1,6 +1,6 @@
 const botSettings = require("./botsettings.json");
 const Discord = require("discord.js");
-
+const triviaURL = "https://opentdb.com/api.php?amount=1";
 const bot = new Discord.Client({disableEveryone: true});
 
 bot.on("ready", async () => {
@@ -53,6 +53,13 @@ bot.on("message", async message => {
   }
 
   if(command === `${botSettings.prefix}trivia`){
+    fetch(triviaURL)
+    .then(reponse => {
+      return response.json()
+    })
+    .then(json => {
+      console.log(json);
+    })
   }
 });
 
